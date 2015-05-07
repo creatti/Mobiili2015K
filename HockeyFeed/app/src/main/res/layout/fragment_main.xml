@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical" >
+tools:context="com.mk.creatti.hockeyfeed.MainActivity$PlaceholderFragment">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dip"
+    android:orientation="horizontal"
+    android:layout_weight="1" >
+
+    <Button
+        android:id="@+id/twitter_button"
+        android:layout_width="0dip"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="#liiga @Twitter"
+        android:background="@drawable/tweettweetbird2"
+        android:onClick="startNewActivity"
+        />
+
+    <Button
+        android:id="@+id/transfers_button"
+        android:layout_width="0dip"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="Siirrot ja huhut"
+        android:background="@drawable/arrows2"
+        android:onClick="startNewActivity"/>
+
+</LinearLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dip"
+    android:orientation="horizontal"
+    android:layout_weight="1" >
+
+    <Button
+        android:id="@+id/jatkoaika_button"
+        android:layout_width="0dip"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/jatkoaika2"
+        android:onClick="startNewActivity"/>
+
+    <Button
+        android:id="@+id/is_button"
+        android:layout_width="0dip"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/is2"
+        android:onClick="startNewActivity"/>
+</LinearLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dip"
+    android:orientation="horizontal"
+    android:layout_weight="1" >
+
+    <Button
+        android:layout_width="0dip"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+    <Button
+        android:layout_width="0dip"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+</LinearLayout>
+</LinearLayout>
