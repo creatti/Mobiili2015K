@@ -33,7 +33,7 @@
         </activity>
         <activity
             android:name=".JatkoaikaActivity"
-            android:label="JatkoaikaFeed"
+            android:label="Jatkoaika.com"
             android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -41,7 +41,7 @@
         </activity>
         <activity
             android:name=".IsActivity"
-            android:label="IsFeed"
+            android:label="Ilta-sanomat"
             android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -48,8 +49,8 @@ public class MainActivity extends ActionBarActivity {
             MainActivity.this.startActivity( intent );
         }
         if ( id == R.id.twitter){
-           // Intent intent = new Intent( MainActivity.this, TwitterActivity.class);
-           // MainActivity.this.startActivity( intent );
+            Toast.makeText(this, "Under construction, coming soon..",
+                    Toast.LENGTH_LONG).show();
         }
 
         return super.onOptionsItemSelected(item);
@@ -58,8 +59,8 @@ public class MainActivity extends ActionBarActivity {
     public void startNewActivity(View view){
         int id = view.getId();
         if(id==R.id.twitter_button){
-            //Intent intent = new Intent( MainActivity.this, TwitterActivity.class);
-            //MainActivity.this.startActivity( intent );
+            Toast.makeText(this, "Under construction, coming soon..",
+                    Toast.LENGTH_LONG).show();
         }
         if(id==R.id.transfers_button){
             Intent intent = new Intent( MainActivity.this, TransfersActivity.class);
