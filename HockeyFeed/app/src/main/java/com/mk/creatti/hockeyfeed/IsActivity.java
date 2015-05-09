@@ -47,17 +47,12 @@ public class IsActivity extends ActionBarActivity{
 
         @Override
         public boolean onCreateOptionsMenu(Menu menu) {
-
-            // Inflate the menu; this adds items to the action bar if it is present.
             getMenuInflater().inflate(R.menu.is_menu, menu);
             return true;
         }
 
         @Override
         public boolean onOptionsItemSelected(MenuItem item) {
-            // Handle action bar item clicks here. The action bar will
-            // automatically handle clicks on the Home/Up button, so long
-            // as you specify a parent activity in AndroidManifest.xml.
             int id = item.getItemId();
             if (id == R.id.action_settings) {
                 return true;
@@ -68,12 +63,9 @@ public class IsActivity extends ActionBarActivity{
             return super.onOptionsItemSelected(item);
         }
         public static class PlaceholderFragment extends ListFragment {
-            // Content holds the article text
-            //public String content = null;
-            // articleContent holds an array of the article texts
+
             public List<String> Content = new ArrayList<String>();
 
-            //public TextView mRssFeed;
             public PlaceholderFragment() {
             }
 
@@ -91,28 +83,9 @@ public class IsActivity extends ActionBarActivity{
 
                         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.iltasanomat.fi/sm-liiga/"));
                         startActivity(browserIntent);
-
-                        // Intent articleContent = new Intent().setClass(PlaceholderFragment.this.getActivity(), ArticleView.class);
-                        // articleContent.putExtra("article number", i);
-                        // articleContent.putExtra("article content", Content.get(i));
-                        // startActivity(articleContent);
                     }
                 });
             }
-
-            /*
-            @Override
-            public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                    Bundle savedInstanceState) {
-                View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-    <<<<<<< HEAD
-                //mRssFeed = (TextView) rootView.findViewById(R.id.rss_feed);
-    =======
-                mRssFeed = (TextView) rootView.findViewById(R.id.rss_feed);
-    >>>>>>> 3fbd05c624d708772b99c9a8bba735d8b0fc4267
-                return rootView;
-            }
-            */
             @Override
             public void onStart() {
                 super.onStart();
@@ -124,9 +97,7 @@ public class IsActivity extends ActionBarActivity{
                 String rssFeed = null;
                 try {
                     // Specify which URL to pull from
-                    //URL url = new URL("http://www.androidpit.com/feed/main.xml");
                     URL url = new URL("http://www.iltasanomat.fi/rss/sm-liiga.xml");
-                    // Open the connection
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     in = conn.getInputStream();
                     ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -141,7 +112,6 @@ public class IsActivity extends ActionBarActivity{
                         in.close();
                     }
                 }
-                // Return the text (string)
                 return rssFeed;
             }
 
@@ -152,9 +122,8 @@ public class IsActivity extends ActionBarActivity{
                 protected List<String> doInBackground(Void... voids) {
                     List<String> result = null;
                     try {
-                        // Call the function that grabs the RSS feed
                         String feed = getAndroidPitRssFeed();
-                        // Parse it
+                        // Parse
                         result = parse(feed);
                     } catch (XmlPullParserException e) {
                         e.printStackTrace();
@@ -164,14 +133,11 @@ public class IsActivity extends ActionBarActivity{
                     return result;
                 }
 
-                // This function parses the string of XML grabbed from the URL
+                // This function parses the string of XML
                 private List<String> parse(String rssFeed) throws XmlPullParserException, IOException {
-                    // Create an XMLPullParserFactory object
                     XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
                     XmlPullParser xpp = factory.newPullParser();
-                    // Feed the PullParser with the XML string
                     xpp.setInput(new StringReader(rssFeed));
-                    // This function navigates to the next tag in the XML
                     xpp.nextTag();
                     // Return the List<String> result of readRss
                     return readRss(xpp);
@@ -242,7 +208,6 @@ public class IsActivity extends ActionBarActivity{
                 }
                 // Processes title tags in the feed.
 
-
                 private String readTitle(XmlPullParser parser)
                         throws IOException, XmlPullParserException {
                     parser.require(XmlPullParser.START_TAG, null, "title");
@@ -260,9 +225,7 @@ public class IsActivity extends ActionBarActivity{
                     return content;
                 }
 
-                // Gets the actual text in XML section and returns it
                 // This function is called for readTitle and any others that need it
-                // (AKA readContent, readImage, etc.)
                 private String readText(XmlPullParser parser)
                         throws IOException, XmlPullParserException {
                     String result = "";

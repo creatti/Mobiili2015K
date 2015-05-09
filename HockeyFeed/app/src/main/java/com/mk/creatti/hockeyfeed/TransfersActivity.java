@@ -1,7 +1,6 @@
 package com.mk.creatti.hockeyfeed;
 
 import android.app.ListFragment;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -47,16 +46,12 @@ public class TransfersActivity  extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.transfers_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             return true;
@@ -67,12 +62,8 @@ public class TransfersActivity  extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
     public static class PlaceholderFragment extends ListFragment {
-        // Content holds the article text
-        //public String content = null;
-        // articleContent holds an array of the article texts
         public List<String> Content = new ArrayList<String>();
 
-        //public TextView mRssFeed;
         public PlaceholderFragment() {
         }
 
@@ -87,27 +78,16 @@ public class TransfersActivity  extends ActionBarActivity {
                     Toast.makeText(view.getContext(), ((TextView) view).getText(),
                             Toast.LENGTH_SHORT).show();
 
-                    Intent articleContent = new Intent().setClass(PlaceholderFragment.this.getActivity(), ArticleView.class);
-                    articleContent.putExtra("article number", i);
-                    articleContent.putExtra("article content", Content.get(i));
-                    startActivity(articleContent);
+                    // Next rows are for future possibility to view more info about the article without using browser
+
+                   // Intent articleContent = new Intent().setClass(PlaceholderFragment.this.getActivity(), ArticleView.class);
+                   // articleContent.putExtra("article number", i);
+                   // articleContent.putExtra("article content", Content.get(i));
+                   // startActivity(articleContent);
                 }
             });
         }
 
-        /*
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-<<<<<<< HEAD
-            //mRssFeed = (TextView) rootView.findViewById(R.id.rss_feed);
-=======
-            mRssFeed = (TextView) rootView.findViewById(R.id.rss_feed);
->>>>>>> 3fbd05c624d708772b99c9a8bba735d8b0fc4267
-            return rootView;
-        }
-        */
         @Override
         public void onStart() {
             super.onStart();
@@ -118,9 +98,7 @@ public class TransfersActivity  extends ActionBarActivity {
             InputStream in = null;
             String rssFeed = null;
             try {
-                // Specify which URL to pull from
                 URL url = new URL("http://www.eliteprospects.com/rss_league.php?league=6");
-                // Open the connection
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 in = conn.getInputStream();
                 ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -135,20 +113,16 @@ public class TransfersActivity  extends ActionBarActivity {
                     in.close();
                 }
             }
-            // Return the text (string)
             return rssFeed;
         }
 
-        // This class grabs the RSS feed and parses it
         private class GetAndroidPitRssFeedTask extends AsyncTask<Void, Void, List<String>> {
 
             @Override
             protected List<String> doInBackground(Void... voids) {
                 List<String> result = null;
                 try {
-                    // Call the function that grabs the RSS feed
                     String feed = getAndroidPitRssFeed();
-                    // Parse it
                     result = parse(feed);
                 } catch (XmlPullParserException e) {
                     e.printStackTrace();
@@ -158,16 +132,11 @@ public class TransfersActivity  extends ActionBarActivity {
                 return result;
             }
 
-            // This function parses the string of XML grabbed from the URL
             private List<String> parse(String rssFeed) throws XmlPullParserException, IOException {
-                // Create an XMLPullParserFactory object
                 XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
                 XmlPullParser xpp = factory.newPullParser();
-                // Feed the PullParser with the XML string
                 xpp.setInput(new StringReader(rssFeed));
-                // This function navigates to the next tag in the XML
                 xpp.nextTag();
-                // Return the List<String> result of readRss
                 return readRss(xpp);
             }
 
@@ -226,7 +195,6 @@ public class TransfersActivity  extends ActionBarActivity {
                     if (name.equals("title")) {
                         result = readTitle(parser);
                     } else if (name.equals("content:encoded")) {
-                        //content = readContent(parser);
                         Content.add(readContent(parser));
                     } else {
                         skip(parser);
