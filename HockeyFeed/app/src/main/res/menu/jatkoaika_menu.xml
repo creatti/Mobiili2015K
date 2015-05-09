@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+tools:context="com.mk.creatti.hockeyfeed.JatkoaikaActivity" >
+
+<item
+    android:id="@+id/action_settings"
+    android:title="@string/action_settings"/>
+<item
+    android:id="@+id/action_refresh"
+    android:title="@string/menu_refresh_text"/>
+</menu>

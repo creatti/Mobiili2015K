@@ -48,7 +48,7 @@ public class TransfersActivity  extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
 
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.transfers_menu, menu);
         return true;
     }
 
@@ -61,7 +61,7 @@ public class TransfersActivity  extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-        if ( id == R.id.twitter){
+        if ( id == R.id.action_refresh){
             return true;
         }
         return super.onOptionsItemSelected(item);

@@ -1,6 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.mk.creatti.MainActivity" >
+    tools:context="com.mk.creatti.hockeyfeed.TransfersActivity" >
 
     <item
         android:id="@+id/action_settings"
@@ -8,13 +8,4 @@
     <item
         android:id="@+id/action_refresh"
         android:title="@string/menu_refresh_text"/>
-    <item
-        android:id="@+id/twitter"
-        android:title="@string/twitter_menu"/>
-    <item
-        android:id="@+id/transfers"
-        android:title="Transfers / Rumours"/>
-    <item
-        android:id="@+id/is"
-        android:title="Ilta-sanomat"/>
 </menu>

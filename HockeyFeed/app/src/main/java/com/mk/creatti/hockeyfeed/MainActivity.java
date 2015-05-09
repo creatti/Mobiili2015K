@@ -52,6 +52,10 @@ public class MainActivity extends ActionBarActivity {
             Toast.makeText(this, "Under construction, coming soon..",
                     Toast.LENGTH_LONG).show();
         }
+        if (id==R.id.is){
+            Intent intent = new Intent( MainActivity.this, IsActivity.class);
+            MainActivity.this.startActivity(intent);
+        }
 
         return super.onOptionsItemSelected(item);
     }
