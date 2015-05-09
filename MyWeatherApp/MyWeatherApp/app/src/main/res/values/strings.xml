@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">MyWeatherApp</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="tampere_name">Tampere</string>
+    <string name="temperature_text">Temp: 5C</string>
+    <string name="wind_text">Wind: 6 m/s</string>
+    <string name="refresh_text">Refresh</string>
+    <string name="city_selection_text_input">Type cityname here...</string>
+    <string name="title_activity_detail">DetailActivity</string>
+    <string name="menu_refresh_text">Refresh</string>
+    <string name="start_positioning">Start positioning</string>
+    <string name="start_sensors">Start sensors</string>
+</resources>
