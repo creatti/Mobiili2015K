@@ -47,33 +47,27 @@ public class JatkoaikaActivity extends ActionBarActivity {
 
         @Override
         public boolean onCreateOptionsMenu(Menu menu) {
-
-            // Inflate the menu; this adds items to the action bar if it is present.
             getMenuInflater().inflate(R.menu.jatkoaika_menu, menu);
             return true;
         }
 
         @Override
         public boolean onOptionsItemSelected(MenuItem item) {
-            // Handle action bar item clicks here. The action bar will
-            // automatically handle clicks on the Home/Up button, so long
-            // as you specify a parent activity in AndroidManifest.xml.
+
             int id = item.getItemId();
             if (id == R.id.action_settings) {
                 return true;
             }
             if ( id == R.id.action_refresh){
-                return true;
+
             }
             return super.onOptionsItemSelected(item);
         }
+
         public static class PlaceholderFragment extends ListFragment {
-            // Content holds the article text
-            //public String content = null;
-            // articleContent holds an array of the article texts
+
             public List<String> Content = new ArrayList<String>();
 
-            //public TextView mRssFeed;
             public PlaceholderFragment() {
             }
 
@@ -91,28 +85,9 @@ public class JatkoaikaActivity extends ActionBarActivity {
 
                         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.jatkoaika.com"));
                         startActivity(browserIntent);
-
-                       // Intent articleContent = new Intent().setClass(PlaceholderFragment.this.getActivity(), ArticleView.class);
-                       // articleContent.putExtra("article number", i);
-                       // articleContent.putExtra("article content", Content.get(i));
-                       // startActivity(articleContent);
                     }
                 });
             }
-
-            /*
-            @Override
-            public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                    Bundle savedInstanceState) {
-                View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-    <<<<<<< HEAD
-                //mRssFeed = (TextView) rootView.findViewById(R.id.rss_feed);
-    =======
-                mRssFeed = (TextView) rootView.findViewById(R.id.rss_feed);
-    >>>>>>> 3fbd05c624d708772b99c9a8bba735d8b0fc4267
-                return rootView;
-            }
-            */
             @Override
             public void onStart() {
                 super.onStart();
@@ -123,10 +98,7 @@ public class JatkoaikaActivity extends ActionBarActivity {
                 InputStream in = null;
                 String rssFeed = null;
                 try {
-                    // Specify which URL to pull from
-                    //URL url = new URL("http://www.androidpit.com/feed/main.xml");
                     URL url = new URL("http://www.jatkoaika.com/rss/index.rss");
-                    // Open the connection
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     in = conn.getInputStream();
                     ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -141,20 +113,16 @@ public class JatkoaikaActivity extends ActionBarActivity {
                         in.close();
                     }
                 }
-                // Return the text (string)
                 return rssFeed;
             }
 
-            // This class grabs the RSS feed and parses it
             private class GetAndroidPitRssFeedTask extends AsyncTask<Void, Void, List<String>> {
 
                 @Override
                 protected List<String> doInBackground(Void... voids) {
                     List<String> result = null;
                     try {
-                        // Call the function that grabs the RSS feed
                         String feed = getAndroidPitRssFeed();
-                        // Parse it
                         result = parse(feed);
                     } catch (XmlPullParserException e) {
                         e.printStackTrace();
@@ -164,22 +132,14 @@ public class JatkoaikaActivity extends ActionBarActivity {
                     return result;
                 }
 
-                // This function parses the string of XML grabbed from the URL
                 private List<String> parse(String rssFeed) throws XmlPullParserException, IOException {
-                    // Create an XMLPullParserFactory object
                     XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
                     XmlPullParser xpp = factory.newPullParser();
-                    // Feed the PullParser with the XML string
                     xpp.setInput(new StringReader(rssFeed));
-                    // This function navigates to the next tag in the XML
                     xpp.nextTag();
-                    // Return the List<String> result of readRss
                     return readRss(xpp);
                 }
 
-                // This function parses XML based on the keyword "rss"
-                // and feeds each "channel" into a List<String> items
-                // readChannel parses the channels
                 private List<String> readRss(XmlPullParser parser)
                         throws XmlPullParserException, IOException {
                     List<String> items = new ArrayList<String>();
@@ -198,8 +158,6 @@ public class JatkoaikaActivity extends ActionBarActivity {
                     return items;
                 }
 
-                // Take each "channel" and parses based on "item"
-                // Feeds each "item" into readItem
                 private List<String> readChannel(XmlPullParser parser)
                         throws IOException, XmlPullParserException {
 
@@ -219,8 +177,6 @@ public class JatkoaikaActivity extends ActionBarActivity {
                     return items;
                 }
 
-                // Takes each "item" and parses based on "title"
-                // Feeds the title into the readTitle, to return the title of an article
                 private String readItem(XmlPullParser parser) throws XmlPullParserException, IOException {
                     String result = null;
                     parser.require(XmlPullParser.START_TAG, null, "item");
@@ -232,7 +188,6 @@ public class JatkoaikaActivity extends ActionBarActivity {
                         if (name.equals("title")) {
                             result = readTitle(parser);
                         } else if (name.equals("content:encoded")) {
-                            //content = readContent(parser);
                             Content.add(readContent(parser));
                         } else {
                             skip(parser);
@@ -240,8 +195,6 @@ public class JatkoaikaActivity extends ActionBarActivity {
                     }
                     return result;
                 }
-                // Processes title tags in the feed.
-
 
                 private String readTitle(XmlPullParser parser)
                         throws IOException, XmlPullParserException {
@@ -251,7 +204,6 @@ public class JatkoaikaActivity extends ActionBarActivity {
                     return title;
                 }
 
-                // Processes content tags in the feed
                 private String readContent(XmlPullParser parser)
                         throws IOException, XmlPullParserException {
                     parser.require(XmlPullParser.START_TAG, null, "content:encoded");
@@ -260,9 +212,6 @@ public class JatkoaikaActivity extends ActionBarActivity {
                     return content;
                 }
 
-                // Gets the actual text in XML section and returns it
-                // This function is called for readTitle and any others that need it
-                // (AKA readContent, readImage, etc.)
                 private String readText(XmlPullParser parser)
                         throws IOException, XmlPullParserException {
                     String result = "";
@@ -273,7 +222,6 @@ public class JatkoaikaActivity extends ActionBarActivity {
                     return result;
                 }
 
-                // This function purposefully ignores any tags that we don't care about
                 private void skip(XmlPullParser parser) throws XmlPullParserException, IOException {
                     if (parser.getEventType() != XmlPullParser.START_TAG) {
                         throw new IllegalStateException();
@@ -291,7 +239,6 @@ public class JatkoaikaActivity extends ActionBarActivity {
                     }
                 }
 
-                // This function sets the list adapter and populates it with rssFeed
                 @Override
                 protected void onPostExecute(List<String> rssFeed) {
                     if (rssFeed != null) {
