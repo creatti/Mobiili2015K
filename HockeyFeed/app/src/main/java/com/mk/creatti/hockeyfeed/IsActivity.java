@@ -58,7 +58,9 @@ public class IsActivity extends ActionBarActivity{
                 return true;
             }
             if ( id == R.id.action_refresh){
-                return true;
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
             }
             return super.onOptionsItemSelected(item);
         }

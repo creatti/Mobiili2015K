@@ -26,7 +26,7 @@ tools:context="com.mk.creatti.hockeyfeed.MainActivity$PlaceholderFragment">
         android:layout_width="0dip"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:text="Siirrot ja huhut"
+        android:text="Tranfers / rumours"
         android:background="@drawable/arrows2"
         android:onClick="startNewActivity"/>
 

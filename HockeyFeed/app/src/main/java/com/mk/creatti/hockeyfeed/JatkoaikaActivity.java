@@ -59,7 +59,9 @@ public class JatkoaikaActivity extends ActionBarActivity {
                 return true;
             }
             if ( id == R.id.action_refresh){
-
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
             }
             return super.onOptionsItemSelected(item);
         }

@@ -1,6 +1,7 @@
 package com.mk.creatti.hockeyfeed;
 
 import android.app.ListFragment;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -57,7 +58,9 @@ public class TransfersActivity  extends ActionBarActivity {
             return true;
         }
         if ( id == R.id.action_refresh){
-            return true;
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }

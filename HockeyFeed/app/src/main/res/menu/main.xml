@@ -3,12 +3,6 @@
     tools:context="com.mk.creatti.MainActivity" >
 
     <item
-        android:id="@+id/action_settings"
-        android:title="@string/action_settings"/>
-    <item
-        android:id="@+id/action_refresh"
-        android:title="@string/menu_refresh_text"/>
-    <item
         android:id="@+id/twitter"
         android:title="@string/twitter_menu"/>
     <item

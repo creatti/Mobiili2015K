@@ -19,11 +19,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ArticleView"
-            android:label="@string/title_activity_article_view"
-            android:parentActivityName=".MainActivity" >
-        </activity>
-        <activity
             android:name=".TransfersActivity"
             android:label="Transfers / Rumours"
             android:parentActivityName=".MainActivity" >
